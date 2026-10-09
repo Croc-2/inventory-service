@@ -28,4 +28,11 @@ export class InventoryStore {
     this.items.set(sku, updated);
     return { ...updated };
   }
+
+  reserve(sku, quantity) {
+    const item = this.items.get(sku);
+    item.quantity -= quantity;
+    this.items.set(sku, item);
+    return item;
+  }
 }
